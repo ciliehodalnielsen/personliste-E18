@@ -7,6 +7,11 @@
     <title>JSON</title>
 </head>
 
+<style>
+
+
+</style>
+
 <body>
 
     <section class="data-container"></section>
@@ -51,6 +56,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", hentJson);
 
+        //hvis man ikke havde skrevet "let person" her, men i stedet nede i async fucnktion hentJson, så ville den kun kunne blive benyttet nede i funktionen, men ikke tilgængelig på resten af sitet
         let personer;
 
         async function hentJson() {
@@ -68,6 +74,7 @@
 
             personer.forEach(person => {
                 //lav en klon af template
+                //cloneNode betyder klon, (true) = betyder ja det vil man gerne. content = betyder man vil klone det hele
                 let klon = temp.cloneNode(true).content;
                 //indsæt data i html
                 klon.querySelector("h2").textContent = person.navn;
@@ -84,6 +91,7 @@
                 klon.querySelector(".data-billede").src = person.billede;
                 //placer klon i html
 
+                //man tilføjer et Child til klon, så hver gang man kloner, er det på
                 modtager.appendChild(klon);
             })
         }
